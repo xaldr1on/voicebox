@@ -71,6 +71,11 @@ jobs:
       #   run: |
       #     pip install torch --index-url https://download.pytorch.org/whl/cu121 --force-reinstall --no-deps
       #     pip install torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+      - name: Install PyTorch with CUDA (Windows only)
+        if: matrix.platform == 'windows-latest'
+        run: |
+          pip install torch --index-url https://download.pytorch.org/whl/cu130 --force-reinstall --no-deps
+          pip install torchvision torchaudio --index-url https://download.pytorch.org/whl/cu130
 
       - name: Build Python server (Linux/macOS)
         if: matrix.platform != 'windows-latest'
